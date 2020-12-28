@@ -1,0 +1,7 @@
+{
+  "app": {
+    "port": "8080",
+    "name": "swapi-wrapper",
+    "logLevel": "info"
+  }
+}

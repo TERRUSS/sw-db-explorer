@@ -1,0 +1,29 @@
+{
+  "name": "sw",
+  "version": "1.0.0",
+  "description": "A UI for SWAPI in node/React",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "lint": "eslint *.js server config bin && echo Lint Passed ❤"
+  },
+  "author": "TERRUSS",
+  "license": "MIT",
+  "dependencies": {
+    "@hapi/boom": "^9.1.1",
+    "@hapi/hapi": "^20.0.3",
+    "@hapi/hoek": "^9.1.0",
+    "@hapi/inert": "^6.0.3",
+    "@hapi/joi": "^17.1.1",
+    "@hapi/vision": "^6.0.1",
+    "axios": "^0.21.0",
+    "config": "^3.3.3",
+    "glob": "^7.1.6",
+    "hapi-cors": "^1.0.3",
+    "hapi-swagger": "^14.0.0",
+    "http-status": "^1.5.0",
+    "joi": "^17.3.0",
+    "lodash": "^4.17.20",
+    "memory-cache": "^0.2.0"
+  }
+}

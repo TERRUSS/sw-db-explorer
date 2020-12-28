@@ -1,0 +1,53 @@
+{
+  "name": "SWPI_ui",
+  "version": "0.1.0",
+  "description": "SWPI - fastory test",
+  "author": "Olivier Benaben",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Codigami/hapi-starter-kit"
+  },
+  "main": "index.js",
+  "engines": {
+    "node": ">=8.3.0",
+    "npm": ">=5.3.0",
+    "yarn": ">=0.27.5"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "lint": "eslint *.js server config bin && echo Lint Passed ❤"
+  },
+  "dependencies": {
+    "@hapi/hapi": "^20.0.3",
+    "@hapi/inert": "^6.0.3",
+    "@hapi/vision": "^6.0.1",
+    "axios": "0.21.0",
+    "bluebird": "3.7.2",
+    "boom": "7.3.0",
+    "bunyan": "1.8.14",
+    "config": "3.3.3",
+    "glob": "7.1.6",
+    "good": "8.1.2",
+    "good-console": "8.0.0",
+    "hapi-swagger": "14.0.0",
+    "http-status": "1.5.0",
+    "joi": "17.3.0",
+    "lodash": "4.17.20"
+  },
+  "devDependencies": {
+    "chai": "4.2.0",
+    "codeclimate-test-reporter": "0.5.1",
+    "eslint": "7.15.0",
+    "eslint-config-standard": "16.0.2",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-promise": "4.2.1",
+    "eslint-plugin-standard": "5.0.0",
+    "husky": "4.3.6",
+    "mocha": "8.2.1",
+    "nock": "13.0.5",
+    "sinon": "9.2.2",
+    "sinon-chai": "3.5.0"
+  }
+}
