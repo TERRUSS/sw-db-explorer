@@ -16,17 +16,6 @@ const routes = [{
   }
 }]
 
-// serve static files
-routes.push({
-    method: 'GET',
-    path: '/{filename}',
-    handler: {
-        file: function (request) {
-            return request.params.filename;
-        }
-    }
-})
-
 // add all routes from all modules to the routes array manually or write your routes inside a folder inside the server folder
 // with suffix as Routes.js e.g weatherRoutes.js
 glob.sync('./server/**/*Routes.js').forEach((file) => {
