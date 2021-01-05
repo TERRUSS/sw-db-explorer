@@ -67,5 +67,5 @@ const cleanURL = async function (url) {
 }
 
 module.exports = {
-  cleanResult
+  cleanResult, cleanURL
 }

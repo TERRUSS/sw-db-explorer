@@ -5,12 +5,12 @@ const swapiService = require('./swapiService')
 const boom = require('@hapi/boom')
 const httpStatus = require('http-status')
 
-const getRessourceList = async function (ressource) {
-	console.log('GET '+ressource)
+const getRessourceList = async function (ressource, page) {
+	console.log('GET '+ressource, page ? '?page='+page : '')
 	try {
-		return await swapiService.getRessourceList(ressource)
+		return await swapiService.getRessourceList(ressource, page)
 	} catch (error) {
-		const errorMessage = `Failed to fetch swapi for ${ressource}`
+		const errorMessage = `Failed to fetch swapi for ${ressource} ${page ? '?page='+page : ''}`
 		!error.logged && console.error(error, errorMessage)
 		return { statusCode: httpStatus.INTERNAL_SERVER_ERROR, message: errorMessage }
 	}

@@ -9,33 +9,33 @@ const swapiCtrl = require('./swapiCtrl')
 const getAllPeople = {
   ressource: 'People',
   endpoint: '/getAllPeople',
-  handler: (request, h) => swapiCtrl.getRessourceList('people')
+  handler: (request, h) => swapiCtrl.getRessourceList('people', request.query.page)
 }
 
 const getAllFilms = {
   ressource: 'Films',
   endpoint: '/getAllFilms', 
-  handler: (request, h) => swapiCtrl.getRessourceList('films')
+  handler: (request, h) => swapiCtrl.getRessourceList('films', request.query.page)
 }
 const getAllSpecies = {
   ressource: 'Species',
   endpoint: '/getAllSpecies', 
-  handler: (request, h) => swapiCtrl.getRessourceList('species')
+  handler: (request, h) => swapiCtrl.getRessourceList('species', request.query.page)
 }
 const getAllStarships = {
   ressource: 'Starships',
   endpoint: '/getAllStarships', 
-  handler: (request, h) => swapiCtrl.getRessourceList('starships')
+  handler: (request, h) => swapiCtrl.getRessourceList('starships', request.query.page)
 }
 const getAllPlanets = {
   ressource: 'Planets',
   endpoint: '/getAllPlanets', 
-  handler: (request, h) => swapiCtrl.getRessourceList('planets')
+  handler: (request, h) => swapiCtrl.getRessourceList('planets', request.query.page)
 }
 const getAllVehicles = {
   ressource: 'Vehicles',
   endpoint: '/getAllVehicles', 
-  handler: (request, h) => swapiCtrl.getRessourceList('vehicles')
+  handler: (request, h) => swapiCtrl.getRessourceList('vehicles', request.query.page)
 }
 
 
