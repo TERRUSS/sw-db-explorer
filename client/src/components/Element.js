@@ -54,8 +54,14 @@ const Element = (props) => {
 					<ElementTemplateParser abstract={!id} data={element} ressource={props.ressource}/>
 				</Words>
 			) : (
-				<div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItem: 'baseline'}}>
-					<Loading animate />
+				<div style={{textAlign: 'center'}}>
+					<div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItem: 'baseline'}}>
+						<Loading animate />
+					</div>
+					<div style={{fontSize: '.7em'}}>
+						<p>Fetching data...</p>
+						<small>(Can take a moment the fist time)</small>
+					</div>
 				</div>
 			)}
 		</Project>

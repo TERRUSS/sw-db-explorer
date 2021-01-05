@@ -8,7 +8,7 @@ const abstractProps = {
 	"planets": ["population", "gravity"],
 	"vehicles": ["model", "manufacturer", "passengers", "cost_in_credits"],
 	"species": ["classification", "language", "average_lifespan"],
-	"people": ["gender", "homeworld", "birth_year"],
+	"people": ["gender", "birth_year", "hair_color"],
 }
 
 const renderInfo = (ressource, arr) => {

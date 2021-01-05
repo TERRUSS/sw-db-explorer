@@ -8,19 +8,21 @@ const { cleanResult } = require('./utils.js')
 const format = ''
 // const format = '/?format=wookiee' // TODO : edit cleanResult & routing system to make it wookiee compatible
 
-const getRessourceList = async function (ressource) {
+const getRessourceList = async function (ressource, page) {
   const options = {
     method: 'get',
-    url: 'https://swapi.dev/api/'+ressource+format,
+    url: `https://swapi.dev/api/${ressource+format}${page ? '?page='+page : ''}`,
     params: {}
   }
 
   try {
     const response = await axios(options)
+    if (response.data.next) response.data.next = response.data.next.match(/\?page=\d$/)[0]
+    if (response.data.previous) response.data.previous = response.data.previous.match(/\?page=\d$/)[0]
     return response.data
   } catch (error) {
     error.logged = true
-    console.error('GetRessList', error, `Failed to fetch swapi for ${ressource}`)
+    console.error('GetRessList', error, `Failed to fetch swapi for ${ressource} ${page ? '?page='+page : ''}`)
     throw error
   }
 }
