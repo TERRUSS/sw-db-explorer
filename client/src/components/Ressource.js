@@ -1,9 +1,10 @@
 
 // import { Button } from 'arwes'
 import { useState, useEffect } from 'react';
-import { 
+import {
 	useRouteMatch,
 	Link,
+	useLocation
 } from "react-router-dom";
 
 import helper from '../helpers/api.js';
@@ -15,19 +16,18 @@ import {Loading, Link as L} from 'arwes';
 
 const Ressource = (props) => {
 	let { url, path } = useRouteMatch();
+	const location = useLocation();
+
 	let ressource = path.slice(1);
 	const [elements, setElements] = useState([]);
 	const [prevNext, setPrevNext] = useState({});
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [isListView, setIsListView] = useState(true);
 
-	const [re, setRe] = useState(0);
-
 	useEffect(()=>{
-		let urlParams = Object.fromEntries(new URLSearchParams(window.location.search));
-		let npage = urlParams["page"] || '';
-
-		helper.API(`/getAll${capitalize(ressource)}${npage? '?page='+npage : ''}`, {
+		const searchParams = new URLSearchParams(location.search);
+		const page = searchParams.get('page')
+		helper.API(`/getAll${capitalize(ressource)}${page? '?page='+page : ''}`, {
 			method: 'GET'
 		})
 		.then(async (result) => {
@@ -37,7 +37,11 @@ const Ressource = (props) => {
 			if (!isLoaded)
 				setIsLoaded(true);
 		})
-	}, [isLoaded, re]);
+	}, [isLoaded]);
+
+	useEffect(() => {
+		setIsLoaded(false)
+	}, [location]);
 
 	useEffect(()=>{
 		if (path.match(new RegExp('\/'+ressource)))
@@ -50,7 +54,7 @@ const Ressource = (props) => {
 
 	return (
 		<div>
-			<L href={`/${ressource}`}><h2 style={{marginBottom: 0}}>{ ressource } > {url}</h2> (click for a detailed report)</L>
+			<L href={`/${ressource}`}><h2 style={{marginBottom: 0}}>{ ressource }</h2> (click for a detailed report)</L>
 
 			{isListView &&
 				<div>
@@ -66,7 +70,7 @@ const Ressource = (props) => {
 							<Loading animate />
 						}
 
-						
+
 
 					</div>
 
@@ -81,7 +85,7 @@ const Ressource = (props) => {
 							}
 							{prevNext && prevNext.next &&
 								<div>
-									<Link to={`${url}${prevNext.next}`} onClick={setRe(re+1)} style={{color: 'inherit'}}>
+									<Link to={`${url}${prevNext.next}`} style={{color: 'inherit'}}>
 										NEXT
 									</Link>
 								</div>
@@ -99,6 +103,8 @@ const Ressource = (props) => {
 
 
 const capitalize = r => r.charAt(0).toUpperCase() + r.slice(1);
+
+const urlParams = Object.fromEntries(new URLSearchParams(window.location.search));
 
 const getRessourceID = (url)=>{
 	return url.match(/[0-9]\/$/);

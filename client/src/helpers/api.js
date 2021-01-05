@@ -1,6 +1,6 @@
 
-const ENDPOINT = 'http://localhost:8080/swapi-wrapper'
-// const ENDPOINT = 'https://swexplorer-api.benaben.space/swapi-wrapper'
+// const ENDPOINT = 'http://localhost:8080/swapi-wrapper'
+const ENDPOINT = 'https://swexplorer-api.benaben.space/swapi-wrapper'
 
 
 export default {
