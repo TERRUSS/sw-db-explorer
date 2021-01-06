@@ -54,7 +54,10 @@ const search = async function (resource, research) {
 
   try {
     const response = await axios(options)
-    return cleanResult(response.data)
+    console.log(response.data)
+    if (response.data.next) response.data.next = response.data.next.match(/\&page=\d$/)[0]
+    if (response.data.previous) response.data.previous = response.data.previous.match(/\&page=\d$/)[0]
+    return response.data
   } catch (error) {
     error.logged = true
     console.error('GetEl', error, `Failed to fetch swapi for ${options.url}`)

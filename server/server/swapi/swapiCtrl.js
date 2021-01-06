@@ -6,7 +6,6 @@ const boom = require('@hapi/boom')
 const httpStatus = require('http-status')
 
 const getRessourceList = async function (ressource, page) {
-	console.log('GET '+ressource, page ? '?page='+page : '')
 	try {
 		return await swapiService.getRessourceList(ressource, page)
 	} catch (error) {

@@ -47,7 +47,8 @@ const cleanURL = async function (url) {
 
     const { getElementName } = require('./swapiService.js')
 
-    if (typeof url === "string" && url.match(/^http/)){
+    if (url && typeof url === "string" && url.match(/^http/)){
+      console.log("parsing", url)
 
       const ressourceURL = url.match(/[a-zA-Z]+\/[0-9]+\/$/)[0].slice(0,-1)
       const ressource = ressourceURL.match(/[a-zA-Z]+\//)[0].slice(0,-1)
@@ -55,7 +56,7 @@ const cleanURL = async function (url) {
 
       let name = `${ressource}#${elementID}`
 
-      console.log("PARSING", name)
+      console.log(">", name)
 
       getElementName(ressource, elementID)
       .then(name => resolve( {'name': name, 'url': ressourceURL} ))
