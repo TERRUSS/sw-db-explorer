@@ -45,6 +45,23 @@ const getElement = async function (ressource, id) {
   }
 }
 
+const search = async function (resource, research) {
+  const options = {
+    method: 'get',
+    url: `https://swapi.dev/api/${resource}/?search=${research}${format}`,
+    params: {}
+  }
+
+  try {
+    const response = await axios(options)
+    return cleanResult(response.data)
+  } catch (error) {
+    error.logged = true
+    console.error('GetEl', error, `Failed to fetch swapi for ${options.url}`)
+    throw error
+  }
+}
+
 const getElementName = async function (ressource, id) {
 
   const cache = require('./cache.js')
@@ -86,5 +103,5 @@ const getElement_base = async function (ressource, id) {
 
 
 module.exports = {
-  getRessourceList, getElement, getElementName
+  getRessourceList, getElement, getElementName, search
 }

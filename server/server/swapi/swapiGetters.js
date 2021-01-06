@@ -45,6 +45,12 @@ const getElement = {
   handler: (request, h) => swapiCtrl.getElement(request.query.ressource, request.query.id)
 }
 
+const search = {
+  ressource: false,
+  endpoint: '/search',
+  handler: (request, h) => swapiCtrl.search(request.query.ressource, request.query.research)
+}
+
 module.exports = [
   getAllPeople,
   getAllFilms,
@@ -53,5 +59,6 @@ module.exports = [
   getAllPlanets,
   getAllVehicles,
 
-  getElement
+  getElement,
+  search
 ]

@@ -34,6 +34,24 @@ const getElement = async (ressource, id) => {
 
 }
 
+const search = async (ressource, research) => {
+	console.log(`GET Search : ${ressource}/${research}`)
+
+	if (research) {
+		try {
+			return swapiService.search(ressource, research)
+		} catch (error) {
+			const errorMessage = `Failed to fetch swapi for ${ressource}/${research}`
+			!error.logged && console.error(error, errorMessage)
+			return boom.boomify(error, { statusCode: httpStatus.INTERNAL_SERVER_ERROR, message: errorMessage })
+		}
+	}
+	else {
+		return { statusCode: httpStatus.BAD_REQUEST, message: "Missing arguments" }
+	}
+
+}
+
 module.exports = {
-  getRessourceList, getElement
+  getRessourceList, getElement, search
 }
