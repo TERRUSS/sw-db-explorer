@@ -68,7 +68,7 @@ const Ressource = (props) => {
 					placeholder={`	🔎 Search in ${ressource}...`}
 					onChange={(value) => setResearch(value)}
 				/>
-				<L style={{pointerEvents: 'none', cursor: 'default'}}><h2 style={{marginBottom: 0}}>{ ressource }</h2> (click for a detailed report)</L>
+				<L style={{pointerEvents: 'none', cursor: 'default'}}><h2 style={{marginBottom: 0}}>{ ressource }</h2> (click items for a detailed report)</L>
 			</div>
 
 			{isListView &&
