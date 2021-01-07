@@ -38,31 +38,31 @@ const plugins = require('./plugins')
  */
 const start = async () => {
 
-  const server = new Hapi.server({
-    port: config.get('app.port'),
-    host: 'localhost',
-    routes: {
-        cors: {
-            origin: ["*"],
-            headers: ["Accept", "Content-Type"],
-            additionalHeaders: ["X-Requested-With"]
-        }
-    }
-  })
+	const server = new Hapi.server({
+		port: config.get('app.port'),
+		host: 'localhost',
+		routes: {
+				cors: {
+						origin: ["*"],
+						headers: ["Accept", "Content-Type"],
+						additionalHeaders: ["X-Requested-With"]
+				}
+		}
+	})
 
-  // attach routes here
-  server.route(routes)
-  await server.register(plugins)
-  
+	// attach routes here
+	server.route(routes)
+	await server.register(plugins)
 
-  try {
-    // add things here before the app starts, like database connection check etc
-    await server.start()
-    console.info(`Server started at port: ${config.get('app.port')}`)
-  } catch (error) {
-    console.error(error)
-    process.exit(1)
-  }
+
+	try {
+		// add things here before the app starts, like database connection check etc
+		await server.start()
+		console.info(`Server started at port: ${config.get('app.port')}`)
+	} catch (error) {
+		console.error(error)
+		process.exit(1)
+	}
 }
 
 start()

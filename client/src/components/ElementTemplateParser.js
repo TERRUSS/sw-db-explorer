@@ -17,6 +17,13 @@ const renderInfo = (ressource, arr) => {
 
 	else {
 
+		// if ( ressource == 'homeworld' )
+		// 	return (
+		// 		<Link to={`/${arr.url}`} style={{padding: "5px"}}>
+		// 			<Button style={{marginBottom: '10px'}}>{arr.name}</Button>
+		// 		</Link>
+		// 	)
+
 		return (
 			<div>
 				{arr.length ? (
@@ -25,8 +32,8 @@ const renderInfo = (ressource, arr) => {
 							<Button style={{marginBottom: '10px'}}>{el.name}</Button>
 						</Link>
 					))
-				) : ( 
-					<p>[None]</p> 
+				) : (
+					<p>[None]</p>
 				)}
 			</div>
 		)

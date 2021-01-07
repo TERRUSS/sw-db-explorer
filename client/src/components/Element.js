@@ -29,7 +29,9 @@ const Element = (props) => {
 				method: 'GET'
 			})
 			.then(async (result) => {
-				setElement(result || {name: 'ERROR', content: 'ERROR'});
+				if (result['homeworld']) // TOFIX properly
+					result['homeworld'] = [result['homeworld']]
+				setElement(result);
 				setIsLoaded(true);
 			})
 			.catch(e => setElement({name: 'ERROR', films: [e+'']}))
@@ -38,8 +40,8 @@ const Element = (props) => {
 
 	useEffect(() => {
 	if (document.getElementById('extendedView'))
-  		document.getElementById('extendedView').scrollIntoView({ behavior: 'smooth' })
-	  console.log("scrolling")
+			document.getElementById('extendedView').scrollIntoView({ behavior: 'smooth' })
+			console.log("scrolling")
 	}, [isLoaded, id])
 
 
